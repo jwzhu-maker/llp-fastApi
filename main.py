@@ -9,7 +9,7 @@ from sqlalchemy.orm import sessionmaker, relationship
 from databases import Database
 from pydantic import BaseModel
 
-DATABASE_URL = "sqlite:///./identifier.sqlite"
+DATABASE_URL = "sqlite:////tmp/identifier.sqlite"
 database = Database(DATABASE_URL)
 
 metadata = MetaData()
@@ -105,8 +105,8 @@ origins = [
 # Add CORSMiddleware to the application instance
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
-    allow_credentials=True,
+    allow_origins=["*"],  # Allows all origins
+    allow_credentials=False,  # Important: set to False if you're using wildcard origins
     allow_methods=["*"],  # Allows all methods
     allow_headers=["*"],  # Allows all headers
 )
