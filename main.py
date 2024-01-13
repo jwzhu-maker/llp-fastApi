@@ -238,7 +238,7 @@ async def check_submission(session_id: int, username: str):
     return {"submitted": False}
 
 
-@app.get("/sessions/")
+@app.get("/sessions")
 async def get_sessions():
     query = sessions_table.select()
     return await database.fetch_all(query)
@@ -263,7 +263,7 @@ async def get_session_submissions(session_id: int):
     return submissions
 
 
-@app.get("/session/{session_id}/owner/")
+@app.get("/session/{session_id}/owner")
 async def get_session_owner(session_id: int):
     # Constructing a JOIN query to fetch session and owner details
     query = select([
