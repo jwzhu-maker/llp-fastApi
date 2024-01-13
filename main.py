@@ -1,5 +1,6 @@
 import random
 
+import uvicorn
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String, ForeignKey, select
@@ -350,3 +351,7 @@ async def get_user(user_name: str):
     if not user:
         raise HTTPException(status_code=404, detail="User not found")
     return user
+
+
+if __name__ == "__main__":
+    uvicorn.run(app, host='0.0.0.0', port=8000)
