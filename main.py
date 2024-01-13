@@ -9,7 +9,7 @@ from sqlalchemy.orm import sessionmaker, relationship
 from databases import Database
 from pydantic import BaseModel
 
-DATABASE_URL = "sqlite:////tmp/identifier.sqlite"
+DATABASE_URL = "sqlite:///./identifier.sqlite"
 database = Database(DATABASE_URL)
 
 metadata = MetaData()
